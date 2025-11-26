@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { PokemonListPage } from './screens/PokemonListPage';
 import { LayoutWrapper } from './LayoutWrapper';
 import { ApolloProvider } from '@apollo/client/react';
@@ -21,6 +21,8 @@ const App = () => (
           <Route path="/" element={<HomePage />} />
           <Route path="/list" element={<PokemonListPage />} />
           <Route path="/pokemon/:id" element={<PokemonListPage />} />
+
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
       </Routes>
     </BrowserRouter>

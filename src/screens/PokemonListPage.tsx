@@ -12,6 +12,10 @@ export const PokemonListPage = () => {
   const [filteredPokemon, setFilteredPokemon] = useState<Pokemon[]>([]);
   const [searchBar, setSearchBar] = useState<string>('');
   const { id: detailId } = useParams();
+
+  if (detailId && (!/^\d+$/.test(detailId) || Number(detailId) < 0 || Number(detailId) > 151))
+    navigate('/list', { replace: true });
+
   const detailOpen = Boolean(detailId);
   const {
     data: details,
@@ -33,7 +37,9 @@ export const PokemonListPage = () => {
       const li = target.closest('li');
       if (li) {
         const currentId = li.dataset.id;
-        if (currentId) openDetails(currentId);
+        if (currentId) {
+          openDetails(currentId);
+        }
       }
     };
     const ul = ulRef.current;

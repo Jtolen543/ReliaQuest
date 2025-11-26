@@ -93,6 +93,7 @@ export const PokemonListPage = () => {
           </li>
         ))}
       </ul>
+      {filteredPokemon.length === 0 && <h1>No matching pokemon for &apos;{searchBar}&apos;</h1>}
       <Modal
         open={detailOpen}
         onCancel={() => closeDetails()}
@@ -100,7 +101,6 @@ export const PokemonListPage = () => {
         title={details?.name}
         className={classes.modal}
         centered
-        destroyOnClose
       >
         {detailLoading && <Spin />}
         {detailError && <Alert type="error" message="Failed to load Pokémon details" />}

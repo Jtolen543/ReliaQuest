@@ -121,10 +121,12 @@ export const useGetPokemonDetails = (
   loading: boolean;
   error: useQuery.Result['error'];
 } => {
+  const numericId = id ? Number(id) : undefined;
   const { data, loading, error } = useQuery<{ pokemon: any[] }>(GET_POKEMON_DETAILS, {
     variables: {
-      id: String(id),
+      id: numericId,
     },
+    skip: !numericId,
   });
   const pokemonData: PokemonDetail | undefined = data?.pokemon?.[0]
     ? {

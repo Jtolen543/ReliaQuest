@@ -33,6 +33,7 @@ export const PokemonListPage = () => {
       const li = target.closest('li');
       if (li) {
         const currentId = li.dataset.id;
+        console.log(currentId);
         if (currentId) openDetails(currentId);
       }
     };
@@ -42,7 +43,7 @@ export const PokemonListPage = () => {
     return () => {
       ul?.removeEventListener('click', handleClick as EventListener);
     };
-  }, [openDetails]);
+  }, [openDetails, data]);
 
   if (loading)
     return (

@@ -28,6 +28,17 @@ function useContext() {
         animation: `${spin} 1.5s infinite`,
       },
     },
+    error: {
+      justifyContent: 'center',
+      alignItems: 'center',
+      height: '100vh',
+      message: {
+        color: {
+          primary: '#e70f0fff',
+          secondary: '#b33e3eff',
+        },
+      },
+    },
     listRoot: {
       display: 'flex' as const,
       flexDirection: 'column' as const,
@@ -199,6 +210,17 @@ export const useStyles = tss.create(({ theme }) => ({
     width: theme.loading.image.width,
     height: theme.loading.image.height,
     animation: theme.loading.image.animation,
+  },
+  error: {
+    justifyContent: theme.error.justifyContent,
+    alignItems: theme.error.alignItems,
+    height: theme.error.height,
+  },
+  errorPrimary: {
+    color: theme.error.message.color.primary,
+  },
+  errorSecondary: {
+    color: theme.error.message.color.secondary,
   },
   search: {
     display: theme.search.display,

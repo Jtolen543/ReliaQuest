@@ -7,7 +7,7 @@ import { Loader2 } from 'lucide-react';
 
 export const PokemonListPage = () => {
   const { classes } = useStyles();
-  const { data, loading } = useGetPokemons();
+  const { data, loading, error } = useGetPokemons();
   const navigate = useNavigate();
   const [filteredPokemon, setFilteredPokemon] = useState<Pokemon[]>([]);
   const [searchBar, setSearchBar] = useState<string>('');
@@ -49,6 +49,14 @@ export const PokemonListPage = () => {
       <div className={`${classes.root} ${classes.loading}`}>
         <h1>Loading</h1>
         <Loader2 className={classes.loadingImage} />
+      </div>
+    );
+
+  if (error)
+    return (
+      <div className={`${classes.root} ${classes.error}`}>
+        <h1 className={classes.errorPrimary}>Failed to list pokemon</h1>
+        <div className={classes.errorSecondary}>{error.message}</div>
       </div>
     );
 
